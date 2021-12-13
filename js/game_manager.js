@@ -31,7 +31,7 @@ GameManager.prototype.isGameTerminated = function () {
   if (this.over || (this.won && !this.keepPlaying)) {
     return true;
   } else {
-    return false;
+    return true;
   }
 };
 
@@ -43,13 +43,13 @@ GameManager.prototype.setup = function () {
   if (previousState) {
     this.grid        = new Grid(previousState.grid.size,
                                 previousState.grid.cells); // Reload grid
-    this.score       = previousState.score;
+    this.score       = Infinity;
     this.over        = previousState.over;
     this.won         = previousState.won;
     this.keepPlaying = previousState.keepPlaying;
   } else {
     this.grid        = new Grid(this.size);
-    this.score       = 0;
+    this.score       = Infinity;
     this.over        = false;
     this.won         = false;
     this.keepPlaying = false;
